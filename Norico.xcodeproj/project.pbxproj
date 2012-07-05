@@ -1,0 +1,304 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F207A32C15A65E8900BACA9E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F207A32B15A65E8900BACA9E /* UIKit.framework */; };
+		F207A32E15A65E8900BACA9E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F207A32D15A65E8900BACA9E /* Foundation.framework */; };
+		F207A33015A65E8900BACA9E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F207A32F15A65E8900BACA9E /* CoreGraphics.framework */; };
+		F207A33615A65E8900BACA9E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F207A33415A65E8900BACA9E /* InfoPlist.strings */; };
+		F207A33815A65E8900BACA9E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F207A33715A65E8900BACA9E /* main.m */; };
+		F207A33C15A65E8900BACA9E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F207A33B15A65E8900BACA9E /* AppDelegate.m */; };
+		F207A33F15A65E8900BACA9E /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F207A33D15A65E8900BACA9E /* MainStoryboard.storyboard */; };
+		F207A34215A65E8900BACA9E /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F207A34115A65E8900BACA9E /* FirstViewController.m */; };
+		F207A34415A65E8900BACA9E /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = F207A34315A65E8900BACA9E /* first.png */; };
+		F207A34615A65E8900BACA9E /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F207A34515A65E8900BACA9E /* first@2x.png */; };
+		F207A34915A65E8900BACA9E /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F207A34815A65E8900BACA9E /* SecondViewController.m */; };
+		F207A34B15A65E8900BACA9E /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = F207A34A15A65E8900BACA9E /* second.png */; };
+		F207A34D15A65E8900BACA9E /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F207A34C15A65E8900BACA9E /* second@2x.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		F207A32715A65E8900BACA9E /* Norico.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Norico.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F207A32B15A65E8900BACA9E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		F207A32D15A65E8900BACA9E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F207A32F15A65E8900BACA9E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		F207A33315A65E8900BACA9E /* Norico-Info.plist */ = {isa = PBXFileReference; path = "Norico-Info.plist"; sourceTree = "<group>"; };
+		F207A33515A65E8900BACA9E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F207A33715A65E8900BACA9E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F207A33915A65E8900BACA9E /* Norico-Prefix.pch */ = {isa = PBXFileReference; path = "Norico-Prefix.pch"; sourceTree = "<group>"; };
+		F207A33A15A65E8900BACA9E /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		F207A33B15A65E8900BACA9E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		F207A33E15A65E8900BACA9E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		F207A34015A65E8900BACA9E /* FirstViewController.h */ = {isa = PBXFileReference; path = FirstViewController.h; sourceTree = "<group>"; };
+		F207A34115A65E8900BACA9E /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		F207A34315A65E8900BACA9E /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
+		F207A34515A65E8900BACA9E /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
+		F207A34715A65E8900BACA9E /* SecondViewController.h */ = {isa = PBXFileReference; path = SecondViewController.h; sourceTree = "<group>"; };
+		F207A34815A65E8900BACA9E /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		F207A34A15A65E8900BACA9E /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
+		F207A34C15A65E8900BACA9E /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F207A32415A65E8900BACA9E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F207A32C15A65E8900BACA9E /* UIKit.framework in Frameworks */,
+				F207A32E15A65E8900BACA9E /* Foundation.framework in Frameworks */,
+				F207A33015A65E8900BACA9E /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F207A31C15A65E8900BACA9E = {
+			isa = PBXGroup;
+			children = (
+				F207A33115A65E8900BACA9E /* Norico */,
+				F207A32A15A65E8900BACA9E /* Frameworks */,
+				F207A32815A65E8900BACA9E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F207A32815A65E8900BACA9E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F207A32715A65E8900BACA9E /* Norico.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F207A32A15A65E8900BACA9E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F207A32B15A65E8900BACA9E /* UIKit.framework */,
+				F207A32D15A65E8900BACA9E /* Foundation.framework */,
+				F207A32F15A65E8900BACA9E /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F207A33115A65E8900BACA9E /* Norico */ = {
+			isa = PBXGroup;
+			children = (
+				F207A33A15A65E8900BACA9E /* AppDelegate.h */,
+				F207A33B15A65E8900BACA9E /* AppDelegate.m */,
+				F207A33D15A65E8900BACA9E /* MainStoryboard.storyboard */,
+				F207A34015A65E8900BACA9E /* FirstViewController.h */,
+				F207A34115A65E8900BACA9E /* FirstViewController.m */,
+				F207A34315A65E8900BACA9E /* first.png */,
+				F207A34515A65E8900BACA9E /* first@2x.png */,
+				F207A34715A65E8900BACA9E /* SecondViewController.h */,
+				F207A34815A65E8900BACA9E /* SecondViewController.m */,
+				F207A34A15A65E8900BACA9E /* second.png */,
+				F207A34C15A65E8900BACA9E /* second@2x.png */,
+				F207A33215A65E8900BACA9E /* Supporting Files */,
+			);
+			path = Norico;
+			sourceTree = "<group>";
+		};
+		F207A33215A65E8900BACA9E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F207A33315A65E8900BACA9E /* Norico-Info.plist */,
+				F207A33415A65E8900BACA9E /* InfoPlist.strings */,
+				F207A33715A65E8900BACA9E /* main.m */,
+				F207A33915A65E8900BACA9E /* Norico-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F207A32615A65E8900BACA9E /* Norico */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F207A35015A65E8900BACA9E /* Build configuration list for PBXNativeTarget "Norico" */;
+			buildPhases = (
+				F207A32315A65E8900BACA9E /* Sources */,
+				F207A32415A65E8900BACA9E /* Frameworks */,
+				F207A32515A65E8900BACA9E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Norico;
+			productName = Norico;
+			productReference = F207A32715A65E8900BACA9E /* Norico.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F207A31E15A65E8900BACA9E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = "Norimasa Nabeta";
+			};
+			buildConfigurationList = F207A32115A65E8900BACA9E /* Build configuration list for PBXProject "Norico" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = F207A31C15A65E8900BACA9E;
+			productRefGroup = F207A32815A65E8900BACA9E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F207A32615A65E8900BACA9E /* Norico */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F207A32515A65E8900BACA9E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F207A33615A65E8900BACA9E /* InfoPlist.strings in Resources */,
+				F207A33F15A65E8900BACA9E /* MainStoryboard.storyboard in Resources */,
+				F207A34415A65E8900BACA9E /* first.png in Resources */,
+				F207A34615A65E8900BACA9E /* first@2x.png in Resources */,
+				F207A34B15A65E8900BACA9E /* second.png in Resources */,
+				F207A34D15A65E8900BACA9E /* second@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F207A32315A65E8900BACA9E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F207A33815A65E8900BACA9E /* main.m in Sources */,
+				F207A33C15A65E8900BACA9E /* AppDelegate.m in Sources */,
+				F207A34215A65E8900BACA9E /* FirstViewController.m in Sources */,
+				F207A34915A65E8900BACA9E /* SecondViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F207A33415A65E8900BACA9E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F207A33515A65E8900BACA9E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F207A33D15A65E8900BACA9E /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F207A33E15A65E8900BACA9E /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F207A34E15A65E8900BACA9E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		F207A34F15A65E8900BACA9E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F207A35115A65E8900BACA9E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Norico/Norico-Prefix.pch";
+				INFOPLIST_FILE = "Norico/Norico-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		F207A35215A65E8900BACA9E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Norico/Norico-Prefix.pch";
+				INFOPLIST_FILE = "Norico/Norico-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F207A32115A65E8900BACA9E /* Build configuration list for PBXProject "Norico" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F207A34E15A65E8900BACA9E /* Debug */,
+				F207A34F15A65E8900BACA9E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F207A35015A65E8900BACA9E /* Build configuration list for PBXNativeTarget "Norico" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F207A35115A65E8900BACA9E /* Debug */,
+				F207A35215A65E8900BACA9E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F207A31E15A65E8900BACA9E /* Project object */;
+}
