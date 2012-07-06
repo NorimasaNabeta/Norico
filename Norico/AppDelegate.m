@@ -115,7 +115,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 - (NSManagedObjectModel *)managedObjectModel
 {
     if (_managedObjectModel != nil) {
-        NSLog(@"managedObjectModel:1 %@", _managedObjectModel);
+    // NSLog(@"managedObjectModel:1 %@", _managedObjectModel);
         return _managedObjectModel;
     }
     NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"JVerse" withExtension:@"mom"];

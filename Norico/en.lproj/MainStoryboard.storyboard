@@ -26,7 +26,7 @@
             </objects>
             <point key="canvasLocation" x="-36" y="106"/>
         </scene>
-        <!--Setting View Controller - Item-->
+        <!--Setting View Controller - Setting-->
         <scene sceneID="qGZ-ly-oKk">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7mb-Ki-Dh6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -73,12 +73,12 @@
                             <outlet property="delegate" destination="LEo-Cq-y28" id="CdB-Tt-YpC"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="jbG-5m-jGg"/>
+                    <tabBarItem key="tabBarItem" title="Setting" image="reverse.png" id="jbG-5m-jGg"/>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="516" y="843"/>
         </scene>
-        <!--Author View Controller - Item-->
+        <!--Author View Controller - Author-->
         <scene sceneID="uru-an-J4W">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L68-y8-HSb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -98,23 +98,23 @@
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="efD-Eu-Jfg">
                                             <rect key="frame" x="10" y="12" width="100" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="HV2-Hy-nIm">
-                                            <rect key="frame" x="163" y="12" width="144" height="21"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="HV2-Hy-nIm">
+                                            <rect key="frame" x="137" y="12" width="144" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="o91-Ta-ZaB" customClass="HighlightingTextView">
-                                            <rect key="frame" x="10" y="46" width="283" height="58"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <rect key="frame" x="10" y="46" width="283" height="69"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
                                     </subviews>
@@ -132,47 +132,47 @@
                             <outlet property="delegate" destination="jfd-Px-c9W" id="lfE-bF-e8i"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="xvf-Qh-09t"/>
+                    <tabBarItem key="tabBarItem" title="Author" image="second.png" id="xvf-Qh-09t"/>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="476" y="280"/>
+            <point key="canvasLocation" x="346" y="264"/>
         </scene>
-        <!--Book View Controller - Item-->
+        <!--Book View Controller - Book-->
         <scene sceneID="ICE-eP-v1w">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sQu-A7-yFT" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="xwS-HG-ziV" customClass="BookViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="79" sectionHeaderHeight="22" sectionFooterHeight="22" id="94e-Yd-Xbp">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="83" sectionHeaderHeight="22" sectionFooterHeight="22" id="94e-Yd-Xbp">
                         <rect key="frame" x="0.0" y="20" width="320" height="411"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="QuoteCellIdentifier" rowHeight="79" id="hWl-Ay-p9D" customClass="QuoteCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="79"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="QuoteCellIdentifier" rowHeight="83" id="hWl-Ay-p9D" customClass="QuoteCell">
+                                <rect key="frame" x="0.0" y="22" width="320" height="83"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="78"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="82"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="UPA-dH-0qc" customClass="HighlightingTextView">
-                                            <rect key="frame" x="20" y="32" width="256" height="39"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <rect key="frame" x="20" y="32" width="256" height="50"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="HzT-F0-0tR">
                                             <rect key="frame" x="20" y="3" width="132" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="JXM-bF-nVl">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="JXM-bF-nVl">
                                             <rect key="frame" x="167" y="3" width="116" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
@@ -191,12 +191,42 @@
                             <outlet property="delegate" destination="xwS-HG-ziV" id="9I6-xN-Qcc"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="vFm-1i-D5v"/>
+                    <tabBarItem key="tabBarItem" title="Book" image="first.png" id="vFm-1i-D5v"/>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="346" y="-294"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="first.png" width="30" height="30"/>
+        <image name="reverse.png" width="30" height="30"/>
+        <image name="second.png" width="30" height="30"/>
+    </resources>
+    <classes>
+        <class className="AuthorViewController" superclassName="RootViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AuthorViewController.h"/>
+        </class>
+        <class className="BookViewController" superclassName="RootViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BookViewController.h"/>
+        </class>
+        <class className="HighlightingTextView" superclassName="UITextView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HighlightingTextView.h"/>
+        </class>
+        <class className="QuoteCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/QuoteCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="actAndSceneLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="characterLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="quotationTextView" candidateClass="HighlightingTextView"/>
+            </relationships>
+        </class>
+        <class className="RootViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RootViewController.h"/>
+        </class>
+        <class className="SettingViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingViewController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

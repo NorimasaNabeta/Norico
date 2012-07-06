@@ -183,8 +183,6 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 //    self.fetchedResultsController=nil;
     self.sectionInfoArray = nil;
 }
@@ -291,8 +289,6 @@ sectionForSectionIndexTitle:(NSString *)title
     else {
         NSLog(@"Any Massage functions is not available");
     }
-    
-    
     
     return cell;
 }
@@ -516,7 +512,7 @@ heightForRowAtIndexPath:(NSIndexPath*)indexPath {
 }
 
 //
-//
+// コンテキストメニューを表示した時点でセルの幅を広げるようにしたい。
 //
 //
 //
