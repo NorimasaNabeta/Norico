@@ -54,6 +54,7 @@
 		F207A41B15A70E9600BACA9E /* reverse@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F207A41515A70E9600BACA9E /* reverse@2x.png */; };
 		F207A41E15A70F1E00BACA9E /* convert.png in Resources */ = {isa = PBXBuildFile; fileRef = F207A41C15A70F1E00BACA9E /* convert.png */; };
 		F207A41F15A70F1E00BACA9E /* fork.png in Resources */ = {isa = PBXBuildFile; fileRef = F207A41D15A70F1E00BACA9E /* fork.png */; };
+		F26F7EB515A8FFB20096D8E1 /* Verse+BookTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = F26F7EB415A8FFB20096D8E1 /* Verse+BookTitle.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -119,6 +120,8 @@
 		F207A41515A70E9600BACA9E /* reverse@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reverse@2x.png"; sourceTree = "<group>"; };
 		F207A41C15A70F1E00BACA9E /* convert.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = convert.png; sourceTree = "<group>"; };
 		F207A41D15A70F1E00BACA9E /* fork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fork.png; sourceTree = "<group>"; };
+		F26F7EB315A8FFB10096D8E1 /* Verse+BookTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Verse+BookTitle.h"; sourceTree = "<group>"; };
+		F26F7EB415A8FFB20096D8E1 /* Verse+BookTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Verse+BookTitle.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +184,8 @@
 				F207A3D415A6C5CB00BACA9E /* HighlightingTextView.m */,
 				F207A3D515A6C5CB00BACA9E /* JVerse.xcdatamodel */,
 				F207A40415A6CBEE00BACA9E /* Verse.h */,
+				F26F7EB315A8FFB10096D8E1 /* Verse+BookTitle.h */,
+				F26F7EB415A8FFB20096D8E1 /* Verse+BookTitle.m */,
 				F207A40515A6CBEE00BACA9E /* Verse.m */,
 				F207A3D615A6C5CB00BACA9E /* QuoteCell.h */,
 				F207A3D715A6C5CB00BACA9E /* QuoteCell.m */,
@@ -340,6 +345,7 @@
 				F207A40315A6C7EC00BACA9E /* AuthorViewController.m in Sources */,
 				F207A40615A6CBEE00BACA9E /* Verse.m in Sources */,
 				F207A40B15A6CEA300BACA9E /* SettingViewController.m in Sources */,
+				F26F7EB515A8FFB20096D8E1 /* Verse+BookTitle.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

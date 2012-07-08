@@ -301,6 +301,7 @@ viewForHeaderInSection:(NSInteger)section
      */
 	SectionInfo *sectionInfo = [self.sectionInfoArray objectAtIndex:section];
     if (!sectionInfo.headerView) {
+        // NSLog(@"sec:%d title:%@", section,sectionInfo.title);
 		NSString *playName = sectionInfo.title;
         sectionInfo.headerView = [[SectionHeaderView alloc] 
                                   initWithFrame:CGRectMake(0.0, 0.0, self.tableView.bounds.size.width, HEADER_HEIGHT) 
@@ -319,51 +320,6 @@ heightForRowAtIndexPath:(NSIndexPath*)indexPath {
     return [[sectionInfo objectInRowHeightsAtIndex:indexPath.row] floatValue];
     // Alternatively, return rowHeight.
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView
- canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView
- commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
- forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView
- moveRowAtIndexPath:(NSIndexPath *)fromIndexPath
- toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView
- canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 
 #pragma mark - FetchResultController delegate
@@ -434,8 +390,8 @@ heightForRowAtIndexPath:(NSIndexPath*)indexPath {
     NSLog(@"sectionOpened:%d",sectionOpened);
 	SectionInfo *sectionInfo = [self.sectionInfoArray objectAtIndex:sectionOpened];
 	sectionInfo.open = YES;
-
     
+    // dispatch_queue_t testq = dispatch_queue_create("com.norimasanabeta.noriko.main", NULL);
     /*
      Create an array containing the index paths of the rows to insert:
      These correspond to the rows for each quotation in the current section.
@@ -450,7 +406,6 @@ heightForRowAtIndexPath:(NSIndexPath*)indexPath {
     for (NSInteger i = 0; i < countOfRowsToInsert; i++) {
         [indexPathsToInsert addObject:[NSIndexPath indexPathForRow:i inSection:sectionOpened]];
     }
-    
     /*
      Create an array containing the index paths of the rows to delete:
      These correspond to the rows for each quotation in the previously-open section, if there was one.
@@ -465,10 +420,15 @@ heightForRowAtIndexPath:(NSIndexPath*)indexPath {
         // NSInteger countOfRowsToDelete = [[[self.fetchedResultsController sections] objectAtIndex:previousOpenSectionIndex] numberOfObjects];
         NSInteger countOfRowsToDelete = [self numberInSection:previousOpenSectionIndex];
         NSLog(@"sectionOpened:%d ToDelete:%d",sectionOpened,countOfRowsToDelete);
+
+        // memory leak problem!!!
+        // dispatch_async(testq, ^{
         for (NSInteger i = 0; i < countOfRowsToDelete; i++) {
             [indexPathsToDelete addObject:[NSIndexPath indexPathForRow:i inSection:previousOpenSectionIndex]];
         }
+        // });
     }
+    // dispatch_release(testq);
     
     // Style the animation so that there's a smooth flow in either direction.
     UITableViewRowAnimation insertAnimation;

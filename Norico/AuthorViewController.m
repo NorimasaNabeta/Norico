@@ -27,7 +27,7 @@
         
         // ソートのクリティリアとセクション分割の項目は合致していないといけないらしい。
         NSSortDescriptor *authorD = [[NSSortDescriptor alloc] initWithKey:@"author" ascending:YES];
-        NSSortDescriptor *vidD=[[NSSortDescriptor alloc] initWithKey:@"vid" ascending:NO];
+        NSSortDescriptor *vidD=[[NSSortDescriptor alloc] initWithKey:@"vid" ascending:YES];
         NSArray *sort = [[NSArray alloc] initWithObjects:authorD, vidD, nil];
         [fetchRequest setSortDescriptors:sort];
         
@@ -36,9 +36,7 @@
                                    initWithFetchRequest:fetchRequest 
                                    managedObjectContext:managedObjectContext
                                    sectionNameKeyPath:@"author"
-                                   //sectionNameKeyPath:@"authorInitial"
-                                   //cacheName:@"Author"];
-                                   cacheName:nil];
+                                   cacheName:@"Author"]; // cacheName:nil];
         _fetchedResultsController.delegate=self;
     }    
     return _fetchedResultsController;
@@ -64,7 +62,7 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
+    [NSFetchedResultsController deleteCacheWithName:@"Author"];    
     NSError *error;    
     if(! [[self fetchedResultsController] performFetch:&error ] ){
         NSLog(@"Unresulved error %@, %@", error, [error userInfo] );

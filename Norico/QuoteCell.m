@@ -14,6 +14,7 @@
 
 #import "QuoteCell.h"
 #import "Verse.h"
+#import "Verse+BookTitle.h"
 #import "HighlightingTextView.h"
 
 @implementation QuoteCell
@@ -27,9 +28,9 @@
 - (void)setVerse:(Verse *)newVerse {
     if (verse != newVerse) {
         verse = newVerse;
-        actAndSceneLabel.text = verse.book;
-        actAndSceneLabel.text = [NSString stringWithFormat:@"%@番", 
-                                 verse.vid];
+        // actAndSceneLabel.text = verse.book;
+        // (新古今集 683 冬歌)
+        actAndSceneLabel.text = [NSString stringWithFormat:@"(%@番 %@)",verse.vid, verse.titleVerseBookTitle];
         characterLabel.text = verse.author;
         quotationTextView.text = verse.text;
     }
