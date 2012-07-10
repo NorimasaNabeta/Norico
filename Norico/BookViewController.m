@@ -77,6 +77,7 @@
 
 
 
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
@@ -99,10 +100,13 @@
     
     return [self.fetchedResultsController objectAtIndexPath:indexPath];
 }
+-(BookViewStyle) bookviewStyle
+{
+    return BOOKVIEW_STYLE_BOOK1;
+}
 
 
-- (NSString *)tableView:(UITableView *)tableView 
-titleForHeaderInSection:(NSInteger)section
+- (NSString *)titleCookedForHeaderInSection:(NSInteger)section
 {
     static NSDictionary *book=nil;
     book=[NSDictionary dictionaryWithObjectsAndKeys: 
@@ -122,10 +126,14 @@ titleForHeaderInSection:(NSInteger)section
           @"新古今和歌集　雑歌 上", @"00080016",@"新古今和歌集　雑歌 中",@"00080017",
           @"新古今和歌集　雑歌 下",@"00080018", @"新古今和歌集　神祇歌",@"00080019",
           @"新古今和歌集　釈教歌", @"00080020",nil];
-     // Display the authors' names as section headings.
-   NSString *title=[[[self.fetchedResultsController sections] objectAtIndex:section] name];
+    NSString *title=[[[self.fetchedResultsController sections] objectAtIndex:section] name];
     return [book valueForKey:title];
-    //return [[[self.fetchedResultsController sections] objectAtIndex:section] name];
+}
+- (NSString *)tableView:(UITableView *)tableView 
+titleForHeaderInSection:(NSInteger)section
+{
+    // Display the authors' names as section headings.
+    return [[[self.fetchedResultsController sections] objectAtIndex:section] name];
 }
 
 /*

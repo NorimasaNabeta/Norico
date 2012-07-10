@@ -22,7 +22,6 @@
 @property (nonatomic, weak) IBOutlet UILabel *actAndSceneLabel;
 @property (nonatomic, weak) IBOutlet HighlightingTextView *quotationTextView;
 
-//@property (nonatomic, strong) Quotation *quotation;
 @property (nonatomic, strong) Verse *verse;
 
 @end

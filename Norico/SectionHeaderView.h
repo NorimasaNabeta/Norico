@@ -19,7 +19,7 @@
 @property (nonatomic, weak) id <SectionHeaderViewDelegate> delegate;
 
 -(id)initWithFrame:(CGRect)frame title:(NSString*)title
-           section:(NSInteger)sectionNumber
+           section:(NSInteger)sectionNumber style:(NSInteger)style
           delegate:(id <SectionHeaderViewDelegate>)delegate;
 -(void)toggleOpenWithUserAction:(BOOL)userAction;
 

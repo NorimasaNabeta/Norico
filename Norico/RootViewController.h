@@ -19,4 +19,15 @@
 // @property (nonatomic,strong) NSManagedObjectContext* managedObjectContext;
 // @property (nonatomic,strong) NSFetchedResultsController *fetchedResultsController;
 
+typedef enum BookViewStyle {
+    BOOKVIEW_STYLE_AUTHOR,
+    BOOKVIEW_STYLE_BOOK1,
+    BOOKVIEW_STYLE_BOOK2,
+    BOOKVIEW_STYLE_BOOK3,
+    BOOKVIEW_STYLE_BOOK4,
+    BOOKVIEW_STYLE_BOOK5,
+    BOOKVIEW_STYLE_BOOK6,
+    BOOKVIEW_STYLE_BOOK7,
+    BOOKVIEW_STYLE_BOOK8,
+} BookViewStyle;
 @end

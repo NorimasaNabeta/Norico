@@ -20,7 +20,6 @@
 @synthesize delegate=_delegate;
 @synthesize section=_section;
 
-
 + (Class)layerClass {
      return [CAGradientLayer class];
 }
@@ -28,6 +27,7 @@
 -(id)initWithFrame:(CGRect)frame
              title:(NSString*)title
            section:(NSInteger)sectionNumber
+             style:(NSInteger)style
           delegate:(id <SectionHeaderViewDelegate>)delegate
 {
     
@@ -69,47 +69,50 @@
         static NSMutableArray *colors1 = nil;
         static NSMutableArray *colors2 = nil;
         static NSMutableArray *colors3 = nil;
-        if (colors1 == nil) {
-            colors1 = [[NSMutableArray alloc] initWithCapacity:3];
-            UIColor *color = nil;
-                color = [UIColor colorWithRed:0.82 green:0.84 blue:0.87 alpha:1.0];
-                [colors1 addObject:(id)[color CGColor]];
-                color = [UIColor colorWithRed:0.41 green:0.41 blue:0.59 alpha:1.0];
-                [colors1 addObject:(id)[color CGColor]];
-                color = [UIColor colorWithRed:0.41 green:0.41 blue:0.59 alpha:1.0];
-                [colors1 addObject:(id)[color CGColor]];
+        switch(style){
+            case 1:
+                if (colors1 == nil) {
+                    colors1 = [[NSMutableArray alloc] initWithCapacity:3];
+                    UIColor *color = nil;
+                    color = [UIColor colorWithRed:0.82 green:0.84 blue:0.87 alpha:1.0];
+                    [colors1 addObject:(id)[color CGColor]];
+                    color = [UIColor colorWithRed:0.41 green:0.41 blue:0.59 alpha:1.0];
+                    [colors1 addObject:(id)[color CGColor]];
+                    color = [UIColor colorWithRed:0.41 green:0.41 blue:0.59 alpha:1.0];
+                    [colors1 addObject:(id)[color CGColor]];
+                }
+                [(CAGradientLayer *)self.layer setColors:colors1];
+                break;
+            case 2:
+                if (colors2 == nil) {
+                    colors2 = [[NSMutableArray alloc] initWithCapacity:3];
+                    UIColor *color = nil;
+                    color = [UIColor colorWithRed:0.87 green:0.84 blue:0.82 alpha:1.0];
+                    [colors2 addObject:(id)[color CGColor]];
+                    color = [UIColor colorWithRed:0.59 green:0.41 blue:0.41 alpha:1.0];
+                    [colors2 addObject:(id)[color CGColor]];
+                    color = [UIColor colorWithRed:0.59 green:0.41 blue:0.41 alpha:1.0];
+                    [colors2 addObject:(id)[color CGColor]];
+                }
+                [(CAGradientLayer *)self.layer setColors:colors2];
+                break;
+            default:
+            case 0:
+                if (colors3 == nil) {
+                    colors3 = [[NSMutableArray alloc] initWithCapacity:3];
+                    UIColor *color = nil;
+                    color = [UIColor colorWithRed:0.87 green:0.84 blue:0.82 alpha:1.0];
+                    color = [UIColor colorWithRed:0.84 green:0.87 blue:0.82 alpha:1.0];
+                    [colors3 addObject:(id)[color CGColor]];
+                    color = [UIColor colorWithRed:0.41 green:0.59 blue:0.41 alpha:1.0];
+                    [colors3 addObject:(id)[color CGColor]];
+                    color = [UIColor colorWithRed:0.41 green:0.59 blue:0.41 alpha:1.0];
+                    [colors3 addObject:(id)[color CGColor]];
+                    
+                }
+                [(CAGradientLayer *)self.layer setColors:colors3]; 
+                break;
         }
-        if (colors2 == nil) {
-            colors2 = [[NSMutableArray alloc] initWithCapacity:3];
-            UIColor *color = nil;
-            color = [UIColor colorWithRed:0.87 green:0.84 blue:0.82 alpha:1.0];
-                [colors2 addObject:(id)[color CGColor]];
-                color = [UIColor colorWithRed:0.59 green:0.41 blue:0.41 alpha:1.0];
-                [colors2 addObject:(id)[color CGColor]];
-                color = [UIColor colorWithRed:0.59 green:0.41 blue:0.41 alpha:1.0];
-                [colors2 addObject:(id)[color CGColor]];
-        }
-        if (colors3 == nil) {
-            colors3 = [[NSMutableArray alloc] initWithCapacity:3];
-            UIColor *color = nil;
-            color = [UIColor colorWithRed:0.87 green:0.84 blue:0.82 alpha:1.0];
-                color = [UIColor colorWithRed:0.84 green:0.87 blue:0.82 alpha:1.0];
-                [colors3 addObject:(id)[color CGColor]];
-                color = [UIColor colorWithRed:0.41 green:0.59 blue:0.41 alpha:1.0];
-                [colors3 addObject:(id)[color CGColor]];
-                color = [UIColor colorWithRed:0.41 green:0.59 blue:0.41 alpha:1.0];
-                [colors3 addObject:(id)[color CGColor]];
-            
-        }
-    if (sectionNumber <19) {
-        [(CAGradientLayer *)self.layer setColors:colors1];
-    }
-    else if (sectionNumber <23){
-        [(CAGradientLayer *)self.layer setColors:colors2];
-    }
-    else {
-        [(CAGradientLayer *)self.layer setColors:colors3];
-    }
         [(CAGradientLayer *)self.layer setLocations:[NSArray arrayWithObjects:
                                                      [NSNumber numberWithFloat:0.0], 
                                                      [NSNumber numberWithFloat:0.48], 

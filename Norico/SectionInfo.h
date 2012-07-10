@@ -22,8 +22,8 @@
 
 @interface SectionInfo : NSObject 
 @property (assign) BOOL open;
-// @property (strong) Play* play;
 @property (strong) NSString   *title;
+@property (strong) NSString   *titleRaw;
 @property (strong) SectionHeaderView* headerView;
 @property (nonatomic,strong,readonly) NSMutableArray *rowHeights;
 

@@ -15,7 +15,6 @@
 
 #import "SectionInfo.h"
 #import "SectionHeaderView.h"
-//#import "Play.h"
 #import "Verse.h"
 
 @implementation SectionInfo
@@ -23,6 +22,7 @@
 @synthesize open;
 @synthesize rowHeights;
 @synthesize title;
+@synthesize titleRaw;
 @synthesize headerView;
 
 - init {

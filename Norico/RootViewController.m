@@ -47,36 +47,6 @@
 //
 //
 //
-#ifdef __TEST__
-@synthesize managedObjectContext;
-@synthesize fetchedResultsController=_fetchedResultsController;
-
--(NSFetchedResultsController*) fetchedResultsController
-{
-    if(_fetchedResultsController == nil){
-        NSFetchRequest *fetchRequest=[[NSFetchRequest alloc] init];
-        NSEntityDescription *entity = [NSEntityDescription 
-                                       entityForName:@"Verse" inManagedObjectContext:managedObjectContext];
-        [fetchRequest setEntity:entity];
-    
-        // ソートのクリティリアとセクション分割の項目は合致していないといけないらしい。
-        NSSortDescriptor *authorD = [[NSSortDescriptor alloc] initWithKey:@"author" ascending:NO];
-        NSSortDescriptor *vidD=[[NSSortDescriptor alloc] initWithKey:@"vid" ascending:YES];
-        NSArray *sort = [[NSArray alloc] initWithObjects:authorD, vidD, nil];
-        [fetchRequest setSortDescriptors:sort];
-
-        [fetchRequest setFetchBatchSize:20];
-        _fetchedResultsController=[[NSFetchedResultsController alloc]
-                                   initWithFetchRequest:fetchRequest 
-                                   managedObjectContext:managedObjectContext
-                                   sectionNameKeyPath:@"author"
-                                   //sectionNameKeyPath:@"authorInitial"
-                                            cacheName:@"Root"];
-        _fetchedResultsController.delegate=self;
-    }    
-    return _fetchedResultsController;
-}
-#endif 
 
 // Copy/Cut/Select/SelectAll のコンテキストメニュー表示を抑制する
 -(BOOL)canBecomeFirstResponder {
@@ -128,17 +98,6 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-#ifdef __TEST__
-
-    NSError *error;    
-    if(! [[self fetchedResultsController] performFetch:&error ] ){
-        NSLog(@"Unresulved error %@, %@", error, [error userInfo] );
-        exit(-1);
-    }
-#endif
-    //     self.searchBar.keyboardType=UIKeyboardTypeDefault;
-//     self.searchBar.autocorrectionType=UITextAutocorrectionTypeNo;
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -153,21 +112,18 @@
      you need to appropriately update the section info during editing operations.
      */
 	if ((self.sectionInfoArray == nil) || 
-//        ([self.sectionInfoArray count] != [[self.fetchedResultsController sections] count])) {
         ([self.sectionInfoArray count] != [self numberOfSectionsInTableView:nil])) {
 
         
         // ここをBlock 化できないものか？
 		NSMutableArray *infoArray = [[NSMutableArray alloc] init];	
-//		for (NSInteger sec = 0; sec <[[self.fetchedResultsController sections] count]; sec++) {			
         for (NSInteger sec = 0; sec <[self numberOfSectionsInTableView:nil]; sec++) {			
 			SectionInfo *sectionInfo = [[SectionInfo alloc] init];			
-			//sectionInfo.title = [[[self.fetchedResultsController sections] objectAtIndex:sec] name];
-			sectionInfo.title = [self tableView:nil titleForHeaderInSection:sec];
+			sectionInfo.title = [self titleCookedForHeaderInSection:sec];
+			sectionInfo.titleRaw = [self tableView:nil titleForHeaderInSection:sec];
 			sectionInfo.open = NO;
 			// NSLog(@"%d: %@", sec, sectionInfo.title);
             NSNumber *defaultRowHeight = [NSNumber numberWithInteger:DEFAULT_ROW_HEIGHT];
-            //NSInteger countOfQuotations = [[[self.fetchedResultsController sections] objectAtIndex:sec] numberOfObjects];
             NSInteger countOfQuotations = [self numberInSection:sec];
 			for (NSInteger i = 0; i < countOfQuotations; i++) {
 				[sectionInfo insertObject:defaultRowHeight inRowHeightsAtIndex:i];
@@ -183,7 +139,6 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-//    self.fetchedResultsController=nil;
     self.sectionInfoArray = nil;
 }
 
@@ -194,33 +149,19 @@
 
 #pragma mark - Table view data source
 
-#ifdef __TEST__
-// section count
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return [[self.fetchedResultsController sections] count];
-}
-- (NSInteger)numberInSection:(NSInteger)aSection
-{
-    return [[[self.fetchedResultsController sections] objectAtIndex:aSection] numberOfObjects];
-}
--(Verse *) verseInIndexPath:(NSIndexPath*)indexPath
-{
-    return [self.fetchedResultsController objectAtIndexPath:indexPath];
-}
-// each section title
-- (NSString *)tableView:(UITableView *)tableView 
-titleForHeaderInSection:(NSInteger)section
-{
-    // Display the authors' names as section headings.
-    return [[[self.fetchedResultsController sections] objectAtIndex:section] name];
-}
-#endif
 - (NSInteger)numberInSection:(NSInteger)aSection
 {
     return 0;
 }
 -(Verse *) verseInIndexPath:(NSIndexPath*)indexPath
+{
+    return nil;
+}
+-(BookViewStyle) bookviewStyle
+{
+    return BOOKVIEW_STYLE_BOOK1;
+}
+- (NSString *) titleCookedForHeaderInSection:(NSInteger)section
 {
     return nil;
 }
@@ -237,19 +178,6 @@ sectionIndexTitleForSectionName:(NSString *)sectionName
         return sectionName;
     }
 }
-
-#ifdef __TEST__
-- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
-    return [self.fetchedResultsController sectionIndexTitles];
-}
-- (NSInteger) tableView:(UITableView *)tableView
-sectionForSectionIndexTitle:(NSString *)title
-                atIndex:(NSInteger)index
-{
-    return [self.fetchedResultsController sectionForSectionIndexTitle:title atIndex:index];
-}
-#endif
-
 // 20120702<<
 
 // amount in each section
@@ -301,12 +229,23 @@ viewForHeaderInSection:(NSInteger)section
      */
 	SectionInfo *sectionInfo = [self.sectionInfoArray objectAtIndex:section];
     if (!sectionInfo.headerView) {
-        // NSLog(@"sec:%d title:%@", section,sectionInfo.title);
+        //NSLog(@"sec:%d title:%@", section,sectionInfo.title);
 		NSString *playName = sectionInfo.title;
+        NSInteger style = 0;
+        if (self.bookviewStyle == BOOKVIEW_STYLE_AUTHOR) {
+            style=0;
+        }
+        else {
+            style=1;
+            if([[sectionInfo.titleRaw substringToIndex:4] isEqualToString:@"0001"]){
+                style=2;
+            }
+        }
         sectionInfo.headerView = [[SectionHeaderView alloc] 
                                   initWithFrame:CGRectMake(0.0, 0.0, self.tableView.bounds.size.width, HEADER_HEIGHT) 
                                   title:playName 
                                   section:section 
+                                  style:style
                                   delegate:self];
     }
     
@@ -396,8 +335,6 @@ heightForRowAtIndexPath:(NSIndexPath*)indexPath {
      Create an array containing the index paths of the rows to insert:
      These correspond to the rows for each quotation in the current section.
      */
-    // NSInteger countOfRowsToInsert = [sectionInfo.play.quotations count];
-    // NSInteger countOfRowsToInsert = [[[self.fetchedResultsController sections] objectAtIndex:sectionOpened] numberOfObjects];
     NSInteger countOfRowsToInsert = [self numberInSection:sectionOpened];
     NSLog(@"sectionOpened:%d ToInsert:%d",sectionOpened,countOfRowsToInsert);
 
@@ -416,8 +353,6 @@ heightForRowAtIndexPath:(NSIndexPath*)indexPath {
 		SectionInfo *previousOpenSection = [self.sectionInfoArray objectAtIndex:previousOpenSectionIndex];
         previousOpenSection.open = NO;
         [previousOpenSection.headerView toggleOpenWithUserAction:NO];
-        // NSInteger countOfRowsToDelete = [previousOpenSection.play.quotations count];
-        // NSInteger countOfRowsToDelete = [[[self.fetchedResultsController sections] objectAtIndex:previousOpenSectionIndex] numberOfObjects];
         NSInteger countOfRowsToDelete = [self numberInSection:previousOpenSectionIndex];
         NSLog(@"sectionOpened:%d ToDelete:%d",sectionOpened,countOfRowsToDelete);
 
@@ -510,6 +445,7 @@ heightForRowAtIndexPath:(NSIndexPath*)indexPath {
         
 		CGFloat newHeight = round(MAX(self.initialPinchHeight * scale, DEFAULT_ROW_HEIGHT));
         
+        if(newHeight < DEFAULT_ROW_HEIGHT *3){
 		SectionInfo *sectionInfo = [self.sectionInfoArray objectAtIndex:indexPath.section];
         [sectionInfo replaceObjectInRowHeightsAtIndex:indexPath.row withObject:[NSNumber numberWithFloat:newHeight]];
         // Alternatively, set uniformRowHeight = newHeight.
@@ -523,6 +459,7 @@ heightForRowAtIndexPath:(NSIndexPath*)indexPath {
         [self.tableView beginUpdates];
         [self.tableView endUpdates];
         [UIView setAnimationsEnabled:animationsEnabled];
+        }
     }
 }
 
@@ -738,6 +675,7 @@ heightForRowAtIndexPath:(NSIndexPath*)indexPath {
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"didSelect: %@", indexPath);
     // Navigation logic may go here. Create and push another view controller.
     /*
      <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];

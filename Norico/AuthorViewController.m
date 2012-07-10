@@ -94,12 +94,20 @@
 {
     return [self.fetchedResultsController objectAtIndexPath:indexPath];
 }
+-(BookViewStyle) bookviewStyle
+{
+    return BOOKVIEW_STYLE_AUTHOR;
+}
 
+- (NSString *)titleCookedForHeaderInSection:(NSInteger)section
+{
+    return [[[self.fetchedResultsController sections] objectAtIndex:section] name];
+}
 - (NSString *)tableView:(UITableView *)tableView 
 titleForHeaderInSection:(NSInteger)section
 {
-    // Display the authors' names as section headings.
-    return [[[self.fetchedResultsController sections] objectAtIndex:section] name];
+    return [self titleCookedForHeaderInSection:section];
+//    return [[[self.fetchedResultsController sections] objectAtIndex:section] name];
 }
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
