@@ -257,15 +257,19 @@ viewForHeaderInSection:(NSInteger)section
 }
 
 
--(CGFloat)tableView:(UITableView*)tableView
-heightForRowAtIndexPath:(NSIndexPath*)indexPath {
+-(CGFloat)      tableView:(UITableView*)tableView
+  heightForRowAtIndexPath:(NSIndexPath*)indexPath {
 	SectionInfo *sectionInfo = [self.sectionInfoArray objectAtIndex:indexPath.section];
     return [[sectionInfo objectInRowHeightsAtIndex:indexPath.row] floatValue];
     // Alternatively, return rowHeight.
 }
 
-- (void)tableView:(UITableView *)tableView
-didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//
+// 選択したセルの高さを変更する。
+// 別のセルが選択された時点でセルの高さはリセットされる。
+//
+- (void)        tableView:(UITableView *)tableView
+  didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // NSLog(@"didSelect: %@", indexPath);
     SectionInfo *sectionInfo = [self.sectionInfoArray objectAtIndex:indexPath.section];

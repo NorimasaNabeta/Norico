@@ -64,8 +64,9 @@
 {
 // #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 2;
+    return 3;
 }
+/*
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -81,7 +82,6 @@
     return cell;
 }
 
-/*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {

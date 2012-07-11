@@ -111,6 +111,11 @@ titleForHeaderInSection:(NSInteger)section
 }
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
+//    NSArray *tmp = [self.fetchedResultsController sectionIndexTitles];
+//    for (NSString* chk in tmp) {
+//        NSLog(@"%@", chk);
+//    }
+//    return tmp;
     return [self.fetchedResultsController sectionIndexTitles];
 }
 - (NSInteger) tableView:(UITableView *)tableView

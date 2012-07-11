@@ -148,14 +148,59 @@ for(UIView *view in [tableView subviews]) {
     }
 }
  */
+
+/*
+//
+// http://stackoverflow.com/questions/2167857/non-us-characters-in-section-headers-for-a-uitableview
+//
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView 
+{    
+    NSMutableArray *indexKeys = [NSMutableArray arrayWithCapacity:30];
+    NSArray *fetchedResults = [self.fetchedResultsController fetchedObjects];
+    NSString *currKey = @"DEFAULT";
+    
+    for (NSManagedObject *managedObject in fetchedResults) {
+        NSString *indexKey = [managedObject valueForKey:@"indexKey"];
+        if (![indexKey isEqualToString:currKey]) {
+            [indexKeys addObject:indexKey];
+            currKey = indexKey;
+        }
+    }
+    
+    return indexKeys;
+}
+*/
+
+// 暫定
+// 実際にはセクションの先頭番の数値を配列化して返す。
+//
+-(NSString*)          controller:(NSFetchedResultsController *)controller
+ sectionIndexTitleForSectionName:(NSString *)sectionName
+{
+    NSRange rng = [sectionName rangeOfString:@"000"];
+    if (rng.location == NSNotFound) {
+        return sectionName;
+    }
+    else {
+        rng.location = 3;
+        rng.length = 5;
+        return [sectionName substringWithRange:rng];
+    }   
+}
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
     // ほんとはここで　vid　のリストを返したい 
+//    NSArray *tmp = [self.fetchedResultsController sectionIndexTitles];
+//    for (NSString* chk in tmp) {
+//        NSLog(@"%@", chk);
+//    }
+//    return tmp;
     return [self.fetchedResultsController sectionIndexTitles];
 }
 - (NSInteger) tableView:(UITableView *)tableView
 sectionForSectionIndexTitle:(NSString *)title
                 atIndex:(NSInteger)index
 {
+//    NSLog(@"sectionForSectionIndexTitle %@ %d", title, index);
     return [self.fetchedResultsController sectionForSectionIndexTitle:title atIndex:index];
 }
 
