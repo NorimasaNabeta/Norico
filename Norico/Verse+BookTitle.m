@@ -12,8 +12,14 @@
 
 - (NSString*) titleVerseBookTitle
 {
+    // 'How to define a static table of strings in iPhone / XCode?'
+    // http://stackoverflow.com/questions/6652192/how-to-define-a-static-table-of-strings-in-iphone-xcode
+    // When you store a reference to an object in a static variable, you need to ensure that it doesn't get deallocated.
+    // So you can either send it a retain message, or create with alloc instead of a convenience creation method.
+    //
     static NSDictionary *dicBook=nil;
-    dicBook=[NSDictionary dictionaryWithObjectsAndKeys: 
+    if(dicBook==nil){
+        dicBook=[[NSDictionary alloc] initWithObjectsAndKeys: 
           @"古今和歌集　春歌 上", @"00010001",@"古今和歌集　春歌 下",@"00010002",@"古今和歌集　夏歌",@"00010003",
           @"古今和歌集　秋歌 上", @"00010004",@"古今和歌集　秋歌 下",@"00010005",@"古今和歌集　冬歌",@"00010006",
           @"古今和歌集　賀歌",@"00010007",@"古今和歌集　離別歌",@"00010008",@"古今和歌集　羈旅歌", @"00010009",
@@ -30,6 +36,8 @@
           @"新古今和歌集　雑歌 上", @"00080016",@"新古今和歌集　雑歌 中",@"00080017",
           @"新古今和歌集　雑歌 下",@"00080018", @"新古今和歌集　神祇歌",@"00080019",
           @"新古今和歌集　釈教歌", @"00080020",nil];
+    }
+       
     // Display the authors' names as section headings.
     return [dicBook valueForKey:[self book]];
 }

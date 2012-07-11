@@ -230,10 +230,11 @@ viewForHeaderInSection:(NSInteger)section
 	SectionInfo *sectionInfo = [self.sectionInfoArray objectAtIndex:section];
     if (!sectionInfo.headerView) {
         //NSLog(@"sec:%d title:%@", section,sectionInfo.title);
-		NSString *playName = sectionInfo.title;
+		NSString *titleName = sectionInfo.title;
         NSInteger style = 0;
         if (self.bookviewStyle == BOOKVIEW_STYLE_AUTHOR) {
             style=0;
+            titleName = sectionInfo.titleRaw;
         }
         else {
             style=1;
@@ -243,7 +244,7 @@ viewForHeaderInSection:(NSInteger)section
         }
         sectionInfo.headerView = [[SectionHeaderView alloc] 
                                   initWithFrame:CGRectMake(0.0, 0.0, self.tableView.bounds.size.width, HEADER_HEIGHT) 
-                                  title:playName 
+                                  title:titleName 
                                   section:section 
                                   style:style
                                   delegate:self];
@@ -676,6 +677,19 @@ heightForRowAtIndexPath:(NSIndexPath*)indexPath {
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"didSelect: %@", indexPath);
+//    if (indexPath && 
+//        (indexPath.section != NSNotFound) && 
+//        (indexPath.row != NSNotFound)) {
+        
+		CGFloat newHeight = round(MAX(self.initialPinchHeight *3, DEFAULT_ROW_HEIGHT));
+        SectionInfo *sectionInfo = [self.sectionInfoArray objectAtIndex:indexPath.section];
+        [sectionInfo replaceObjectInRowHeightsAtIndex:indexPath.row withObject:[NSNumber numberWithFloat:newHeight]];
+            BOOL animationsEnabled = [UIView areAnimationsEnabled];
+            [UIView setAnimationsEnabled:NO];
+            [self.tableView beginUpdates];
+            [self.tableView endUpdates];
+            [UIView setAnimationsEnabled:animationsEnabled];
+//    }
     // Navigation logic may go here. Create and push another view controller.
     /*
      <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];

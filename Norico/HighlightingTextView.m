@@ -17,11 +17,9 @@
 
 @synthesize highlighted;
 
-// readonly and no copy/cut/select/selectall permitted
--(BOOL)canBecomeFirstResponder {
-    return NO;
-}
+//-(BOOL)canBecomeFirstResponder { return NO;}
 
+// readonly and no copy/cut/select/selectall permitted
 -(void)setHighlighted:(BOOL)highlight; {
     
     // Adjust the text color based on highlighted state.

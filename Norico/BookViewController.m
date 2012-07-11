@@ -97,7 +97,8 @@
     // CategorySample
     // Verse* chk=[self.fetchedResultsController objectAtIndexPath:indexPath];
     // NSLog(@"%@", chk.titleVerseBookTitle);
-    
+    // indexPath.section
+    // indexPath.row
     return [self.fetchedResultsController objectAtIndexPath:indexPath];
 }
 -(BookViewStyle) bookviewStyle
@@ -109,7 +110,8 @@
 - (NSString *)titleCookedForHeaderInSection:(NSInteger)section
 {
     static NSDictionary *book=nil;
-    book=[NSDictionary dictionaryWithObjectsAndKeys: 
+    if(book == nil){
+        book=[[NSDictionary alloc] initWithObjectsAndKeys: 
           @"古今和歌集　春歌 上", @"00010001",@"古今和歌集　春歌 下",@"00010002",@"古今和歌集　夏歌",@"00010003",
           @"古今和歌集　秋歌 上", @"00010004",@"古今和歌集　秋歌 下",@"00010005",@"古今和歌集　冬歌",@"00010006",
           @"古今和歌集　賀歌",@"00010007",@"古今和歌集　離別歌",@"00010008",@"古今和歌集　羈旅歌", @"00010009",
@@ -126,6 +128,7 @@
           @"新古今和歌集　雑歌 上", @"00080016",@"新古今和歌集　雑歌 中",@"00080017",
           @"新古今和歌集　雑歌 下",@"00080018", @"新古今和歌集　神祇歌",@"00080019",
           @"新古今和歌集　釈教歌", @"00080020",nil];
+    }
     NSString *title=[[[self.fetchedResultsController sections] objectAtIndex:section] name];
     return [book valueForKey:title];
 }

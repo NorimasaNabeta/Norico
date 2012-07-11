@@ -38,17 +38,23 @@
                         <sections>
                             <tableViewSection id="G8e-7R-ezt">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="nid-6P-ieI">
-                                        <rect key="frame" x="0.0" y="10" width="320" height="45"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="104" id="nid-6P-ieI">
+                                        <rect key="frame" x="0.0" y="10" width="320" height="105"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <rect key="frame" x="10" y="1" width="300" height="103"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Icon@2x.png" id="XjN-ja-1x0">
+                                                    <rect key="frame" x="115" y="5" width="70" height="70"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="zgI-jG-9nd">
-                                        <rect key="frame" x="0.0" y="55" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="115" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
@@ -57,7 +63,7 @@
                                         </view>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="dR9-32-612">
-                                        <rect key="frame" x="0.0" y="99" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="159" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
@@ -76,7 +82,7 @@
                     <tabBarItem key="tabBarItem" title="Setting" image="reverse.png" id="jbG-5m-jGg"/>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="516" y="843"/>
+            <point key="canvasLocation" x="346" y="852"/>
         </scene>
         <!--Author View Controller - Author-->
         <scene sceneID="uru-an-J4W">
@@ -109,7 +115,7 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="o91-Ta-ZaB" customClass="HighlightingTextView">
+                                        <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" id="o91-Ta-ZaB" customClass="HighlightingTextView">
                                             <rect key="frame" x="10" y="46" width="283" height="69"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -154,7 +160,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="102"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="UPA-dH-0qc" customClass="HighlightingTextView">
+                                        <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" id="UPA-dH-0qc" customClass="HighlightingTextView">
                                             <rect key="frame" x="20" y="32" width="256" height="70"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -198,35 +204,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Icon@2x.png" width="114" height="114"/>
         <image name="first.png" width="30" height="30"/>
         <image name="reverse.png" width="30" height="30"/>
         <image name="second.png" width="30" height="30"/>
     </resources>
-    <classes>
-        <class className="AuthorViewController" superclassName="RootViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AuthorViewController.h"/>
-        </class>
-        <class className="BookViewController" superclassName="RootViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BookViewController.h"/>
-        </class>
-        <class className="HighlightingTextView" superclassName="UITextView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HighlightingTextView.h"/>
-        </class>
-        <class className="QuoteCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/QuoteCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="actAndSceneLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="characterLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="quotationTextView" candidateClass="HighlightingTextView"/>
-            </relationships>
-        </class>
-        <class className="RootViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RootViewController.h"/>
-        </class>
-        <class className="SettingViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

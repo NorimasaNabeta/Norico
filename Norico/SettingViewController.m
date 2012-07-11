@@ -27,6 +27,10 @@
 {
     [super viewDidLoad];
 
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    BOOL enableValue = [defaults boolForKey:@"enable_preference"];
+    NSString *nameValue = [defaults stringForKey:@"name_preference"];
+    NSLog(@"Bool:%d, Name:%@", enableValue, nameValue);
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
