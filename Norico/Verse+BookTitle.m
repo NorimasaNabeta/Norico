@@ -10,6 +10,8 @@
 
 @implementation Verse (BookTitle)
 
+// Category for StanfordCS139p Lecture13, demo:PhotoMania
+//
 - (NSString*) titleVerseBookTitle
 {
     // 'How to define a static table of strings in iPhone / XCode?'

@@ -221,6 +221,9 @@ sectionIndexTitleForSectionName:(NSString *)sectionName
     return cell;
 }
 
+#pragma mark - Table view delegate
+
+
 -(UIView*)tableView:(UITableView*)tableView
 viewForHeaderInSection:(NSInteger)section
 {
@@ -253,12 +256,37 @@ viewForHeaderInSection:(NSInteger)section
     return sectionInfo.headerView;
 }
 
+
 -(CGFloat)tableView:(UITableView*)tableView
 heightForRowAtIndexPath:(NSIndexPath*)indexPath {
-    
 	SectionInfo *sectionInfo = [self.sectionInfoArray objectAtIndex:indexPath.section];
     return [[sectionInfo objectInRowHeightsAtIndex:indexPath.row] floatValue];
     // Alternatively, return rowHeight.
+}
+
+- (void)tableView:(UITableView *)tableView
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // NSLog(@"didSelect: %@", indexPath);
+    SectionInfo *sectionInfo = [self.sectionInfoArray objectAtIndex:indexPath.section];
+    for (NSInteger i = 0; i < sectionInfo.rowHeights.count; i++) {
+        if(i == indexPath.row){
+            [sectionInfo replaceObjectInRowHeightsAtIndex:i withObject:[NSNumber numberWithFloat:DEFAULT_ROW_HEIGHT*2]];
+        }
+        else {
+            [sectionInfo replaceObjectInRowHeightsAtIndex:i withObject:[NSNumber numberWithFloat:DEFAULT_ROW_HEIGHT]];
+        }
+
+    }
+    [self.tableView beginUpdates];
+    [self.tableView endUpdates];
+
+    /*
+     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
+     // ...
+     // Pass the selected object to the new view controller.
+     [self.navigationController pushViewController:detailViewController animated:YES];
+     */
 }
 
 
@@ -671,32 +699,5 @@ heightForRowAtIndexPath:(NSIndexPath*)indexPath {
 //
 //
 //
-#pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView
-didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSLog(@"didSelect: %@", indexPath);
-//    if (indexPath && 
-//        (indexPath.section != NSNotFound) && 
-//        (indexPath.row != NSNotFound)) {
-        
-		CGFloat newHeight = round(MAX(self.initialPinchHeight *3, DEFAULT_ROW_HEIGHT));
-        SectionInfo *sectionInfo = [self.sectionInfoArray objectAtIndex:indexPath.section];
-        [sectionInfo replaceObjectInRowHeightsAtIndex:indexPath.row withObject:[NSNumber numberWithFloat:newHeight]];
-            BOOL animationsEnabled = [UIView areAnimationsEnabled];
-            [UIView setAnimationsEnabled:NO];
-            [self.tableView beginUpdates];
-            [self.tableView endUpdates];
-            [UIView setAnimationsEnabled:animationsEnabled];
-//    }
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
-}
 
 @end
