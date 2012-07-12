@@ -52,6 +52,12 @@
     return self;
 }
 
+- (void) awakeFromNib
+{
+    [super awakeFromNib];
+    NSLog(@"awakenAuthor: ");
+//    [NSFetchedResultsController deleteCacheWithName:@"Author"];
+}
 
 - (void)viewDidLoad
 {   

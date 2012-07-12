@@ -55,12 +55,20 @@
     return self;
 }
 
+- (void) awakeFromNib
+{
+    [super awakeFromNib];
+    NSLog(@"awakenBook: ");
+//    [NSFetchedResultsController deleteCacheWithName:@"Book"];
+}
 
 - (void)viewDidLoad
 {     
     [super viewDidLoad];
  	// Do any additional setup after loading the view, typically from a nib.
     
+    // http://stackoverflow.com/questions/2966844/ipad-coredata-fetchedrequest-ignores-changes-in-predicate
+    // You must clear cache all time when you change predicate or fetchRequest
     [NSFetchedResultsController deleteCacheWithName:@"Book"];
     NSError *error;    
     if(! [[self fetchedResultsController] performFetch:&error ] ){

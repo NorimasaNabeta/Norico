@@ -101,7 +101,6 @@
                 if (colors3 == nil) {
                     colors3 = [[NSMutableArray alloc] initWithCapacity:3];
                     UIColor *color = nil;
-                    color = [UIColor colorWithRed:0.87 green:0.84 blue:0.82 alpha:1.0];
                     color = [UIColor colorWithRed:0.84 green:0.87 blue:0.82 alpha:1.0];
                     [colors3 addObject:(id)[color CGColor]];
                     color = [UIColor colorWithRed:0.41 green:0.59 blue:0.41 alpha:1.0];
