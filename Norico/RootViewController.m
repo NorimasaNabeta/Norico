@@ -32,6 +32,8 @@
 // Use the uniformRowHeight property if the pinch gesture should change all row heights simultaneously.
 @property (nonatomic, assign) NSInteger uniformRowHeight;
 
+@property (nonatomic, strong) UIActivityIndicatorView *spinner; 
+
 @end
 
 @implementation RootViewController
@@ -43,10 +45,42 @@
 @synthesize openSectionIndex=_openSectionIndex;
 @synthesize initialPinchHeight=_initialPinchHeight;
 @synthesize uniformRowHeight=_uniformRowHeight;
+@synthesize spinner=_spinner;
+//
+//
+//
 
-//
-//
-//
+-(void) setSectionInfoArray:(NSMutableArray *)sectionInfoArray
+{
+    if(_sectionInfoArray != sectionInfoArray){
+        _sectionInfoArray = sectionInfoArray;
+        [self.tableView reloadData];
+    }
+}
+
+-(UIActivityIndicatorView *) spinner
+{
+    if(! _spinner){
+        _spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+#ifdef __NOT_YET__
+        CGSize viewSize = self.view.bounds.size;
+        
+        // other size? change it
+        _spinner.bounds = CGRectMake(0, 0, 65, 65);
+        _spinner.hidesWhenStopped = YES;
+        _spinner.alpha = 0.7f;
+        _spinner.backgroundColor = [UIColor blackColor];
+        //_spinner.layer.cornerRadius = 10.0f;
+        
+        // display it in the center of your view
+        _spinner.center = CGPointMake(viewSize.width / 2.0, viewSize.height / 2.0);
+#endif 
+        
+        [self.view addSubview:_spinner];
+    }
+    return _spinner;
+}
+
 
 // Copy/Cut/Select/SelectAll のコンテキストメニュー表示を抑制する
 -(BOOL)canBecomeFirstResponder {
@@ -103,6 +137,7 @@
 - (void)viewWillAppear:(BOOL)animated {
 	
 	[super viewWillAppear:animated]; 
+    // [self.spinner startAnimating];
 	
     /*
      Check whether the section info array has been created, 
@@ -114,10 +149,10 @@
 	if ((self.sectionInfoArray == nil) || 
         ([self.sectionInfoArray count] != [self numberOfSectionsInTableView:nil])) {
 
-        
+		NSMutableArray *infoArray = [[NSMutableArray alloc] init];
+#ifdef __TEST_NOT_BLOCK__
         // ここをBlock 化できないものか？
-		NSMutableArray *infoArray = [[NSMutableArray alloc] init];	
-        for (NSInteger sec = 0; sec <[self numberOfSectionsInTableView:nil]; sec++) {			
+        for (NSInteger sec = 0; sec <[self numberOfSectionsInTableView:nil]; sec++) {
 			SectionInfo *sectionInfo = [[SectionInfo alloc] init];			
 			sectionInfo.title = [self titleCookedForHeaderInSection:sec];
 			sectionInfo.titleRaw = [self tableView:nil titleForHeaderInSection:sec];
@@ -132,7 +167,32 @@
 		}
 		
 		self.sectionInfoArray = infoArray;
+#else // #ifdef __TEST_NOT_BLOCK__
+        dispatch_queue_t downloadQueue = dispatch_queue_create("setup sections", NULL);
+        dispatch_async(downloadQueue, ^{
+            for (NSInteger sec = 0; sec <[self numberOfSectionsInTableView:nil]; sec++) {
+                SectionInfo *sectionInfo = [[SectionInfo alloc] init];
+                sectionInfo.title = [self titleCookedForHeaderInSection:sec];
+                sectionInfo.titleRaw = [self tableView:nil titleForHeaderInSection:sec];
+                sectionInfo.open = NO;
+                // NSLog(@"%d: %@", sec, sectionInfo.title);
+                NSNumber *defaultRowHeight = [NSNumber numberWithInteger:DEFAULT_ROW_HEIGHT];
+                NSInteger countOfQuotations = [self numberInSection:sec];
+                for (NSInteger i = 0; i < countOfQuotations; i++) {
+                    [sectionInfo insertObject:defaultRowHeight inRowHeightsAtIndex:i];
+                }
+                [infoArray addObject:sectionInfo];
+            }            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.sectionInfoArray = infoArray;
+            });
+        });
+        dispatch_release(downloadQueue);
+#endif //#ifdef __TEST_NOT_BLOCK__
+        
 	}
+    // [self.spinner stopAnimating];
+
 	
 }
 
@@ -352,6 +412,7 @@ viewForHeaderInSection:(NSInteger)section
     [self.tableView endUpdates];
 }
 
+
 //
 //
 //
@@ -360,6 +421,7 @@ viewForHeaderInSection:(NSInteger)section
            sectionOpened:(NSInteger)sectionOpened
 {
     NSLog(@"sectionOpened:%d",sectionOpened);
+    [self.spinner startAnimating];
 	SectionInfo *sectionInfo = [self.sectionInfoArray objectAtIndex:sectionOpened];
 	sectionInfo.open = YES;
     
@@ -371,7 +433,6 @@ viewForHeaderInSection:(NSInteger)section
     NSInteger countOfRowsToInsert = [self numberInSection:sectionOpened];
     NSLog(@"sectionOpened:%d ToInsert:%d",sectionOpened,countOfRowsToInsert);
 
-        
     NSMutableArray *indexPathsToInsert = [[NSMutableArray alloc] init];
     for (NSInteger i = 0; i < countOfRowsToInsert; i++) {
         [indexPathsToInsert addObject:[NSIndexPath indexPathForRow:i inSection:sectionOpened]];
@@ -416,6 +477,12 @@ viewForHeaderInSection:(NSInteger)section
     [self.tableView deleteRowsAtIndexPaths:indexPathsToDelete withRowAnimation:deleteAnimation];
     [self.tableView endUpdates];
     self.openSectionIndex = sectionOpened;
+    
+    [self.spinner stopAnimating];
+#ifdef __TEST_NOT_BLOCK__
+#else //#ifdef __TEST_NOT_BLOCK__
+    
+#endif //#ifdef __TEST_NOT_BLOCK__
 }
 -(void)sectionHeaderView:(SectionHeaderView*)sectionHeaderView
            sectionClosed:(NSInteger)sectionClosed
