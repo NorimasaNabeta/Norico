@@ -421,7 +421,7 @@ viewForHeaderInSection:(NSInteger)section
            sectionOpened:(NSInteger)sectionOpened
 {
     NSLog(@"sectionOpened:%d",sectionOpened);
-    [self.spinner startAnimating];
+//    [self.spinner startAnimating];
 	SectionInfo *sectionInfo = [self.sectionInfoArray objectAtIndex:sectionOpened];
 	sectionInfo.open = YES;
     
@@ -430,6 +430,7 @@ viewForHeaderInSection:(NSInteger)section
      Create an array containing the index paths of the rows to insert:
      These correspond to the rows for each quotation in the current section.
      */
+#ifdef __TEST_NOT_BLOCK__
     NSInteger countOfRowsToInsert = [self numberInSection:sectionOpened];
     NSLog(@"sectionOpened:%d ToInsert:%d",sectionOpened,countOfRowsToInsert);
 
@@ -478,10 +479,65 @@ viewForHeaderInSection:(NSInteger)section
     [self.tableView endUpdates];
     self.openSectionIndex = sectionOpened;
     
-    [self.spinner stopAnimating];
+//    [self.spinner stopAnimating];
+#else //#ifdef __TEST_NOT_BLOCK__
+    NSInteger countOfRowsToInsert = [self numberInSection:sectionOpened];
+    NSLog(@"sectionOpened:%d ToInsert:%d",sectionOpened,countOfRowsToInsert);
+    
+    NSMutableArray *indexPathsToInsert = [[NSMutableArray alloc] init];
+    NSMutableArray *indexPathsToDelete = [[NSMutableArray alloc] init];
+    NSInteger previousOpenSectionIndex = self.openSectionIndex;
+    
+    dispatch_queue_t downloadQueue = dispatch_queue_create("open sections", NULL);
+    dispatch_async(downloadQueue, ^{
+        for (NSInteger i = 0; i < countOfRowsToInsert; i++) {
+            [indexPathsToInsert addObject:[NSIndexPath indexPathForRow:i inSection:sectionOpened]];
+        }
+        if (previousOpenSectionIndex != NSNotFound) {
+            SectionInfo *previousOpenSection = [self.sectionInfoArray objectAtIndex:previousOpenSectionIndex];
+            previousOpenSection.open = NO;
+            [previousOpenSection.headerView toggleOpenWithUserAction:NO];
+            NSInteger countOfRowsToDelete = [self numberInSection:previousOpenSectionIndex];
+            NSLog(@"sectionOpened:%d ToDelete:%d",sectionOpened,countOfRowsToDelete);
+            for (NSInteger i = 0; i < countOfRowsToDelete; i++) {
+                [indexPathsToDelete addObject:[NSIndexPath indexPathForRow:i inSection:previousOpenSectionIndex]];
+            }
+        }
+    
+        // Style the animation so that there's a smooth flow in either direction.
+        UITableViewRowAnimation insertAnimation;
+        UITableViewRowAnimation deleteAnimation;
+        if (previousOpenSectionIndex == NSNotFound || sectionOpened < previousOpenSectionIndex) {
+            insertAnimation = UITableViewRowAnimationTop;
+            deleteAnimation = UITableViewRowAnimationBottom;
+        }
+        else {
+            insertAnimation = UITableViewRowAnimationBottom;
+            deleteAnimation = UITableViewRowAnimationTop;
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView beginUpdates];
+            [self.tableView insertRowsAtIndexPaths:indexPathsToInsert withRowAnimation:insertAnimation];
+            [self.tableView deleteRowsAtIndexPaths:indexPathsToDelete withRowAnimation:deleteAnimation];
+            [self.tableView endUpdates];
+            self.openSectionIndex = sectionOpened;
+        });
+    });
+    dispatch_release(downloadQueue);
+
+#endif //#ifdef __TEST_NOT_BLOCK__
+
+// Block code sample:
+//    dispatch_queue_t downloadQueue = dispatch_queue_create("flickr downloader", NULL);
+//    dispatch_async(downloadQueue, ^{
+//        NSArray *photos = [FlickrFetcher recentGeoreferencedPhotos];
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            self.photos = photos;
+//        });
+//    });
+//    dispatch_release(downloadQueue);
 #ifdef __TEST_NOT_BLOCK__
 #else //#ifdef __TEST_NOT_BLOCK__
-    
 #endif //#ifdef __TEST_NOT_BLOCK__
 }
 -(void)sectionHeaderView:(SectionHeaderView*)sectionHeaderView
@@ -498,10 +554,24 @@ viewForHeaderInSection:(NSInteger)section
     NSLog(@"sectionClosed:%d ToDelete:%d",sectionClosed,countOfRowsToDelete);
     if (countOfRowsToDelete > 0) {
         NSMutableArray *indexPathsToDelete = [[NSMutableArray alloc] init];
+#ifdef __TEST_NOT_BLOCK__
         for (NSInteger i = 0; i < countOfRowsToDelete; i++) {
             [indexPathsToDelete addObject:[NSIndexPath indexPathForRow:i inSection:sectionClosed]];
         }
         [self.tableView deleteRowsAtIndexPaths:indexPathsToDelete withRowAnimation:UITableViewRowAnimationTop];
+#else //#ifdef __TEST_NOT_BLOCK__
+        dispatch_queue_t downloadQueue = dispatch_queue_create("delete sections", NULL);
+        dispatch_async(downloadQueue, ^{
+            for (NSInteger i = 0; i < countOfRowsToDelete; i++) {
+                [indexPathsToDelete addObject:[NSIndexPath indexPathForRow:i inSection:sectionClosed]];
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.tableView deleteRowsAtIndexPaths:indexPathsToDelete withRowAnimation:UITableViewRowAnimationTop];
+                //[self.tableView reloadData];
+            });
+        });
+        dispatch_release(downloadQueue);
+#endif //#ifdef __TEST_NOT_BLOCK__
     }
     self.openSectionIndex = NSNotFound;
 }

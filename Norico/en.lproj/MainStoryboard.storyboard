@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2549" systemVersion="12A269" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4">
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
-        <development defaultVersion="4200" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1498"/>
     </dependencies>
     <scenes>
         <!--Tab Bar Controller-->
@@ -24,7 +23,7 @@
                     </connections>
                 </tabBarController>
             </objects>
-            <point key="canvasLocation" x="-36" y="106"/>
+            <point key="canvasLocation" x="-361" y="-2"/>
         </scene>
         <!--Setting View Controller - setting-->
         <scene sceneID="qGZ-ly-oKk">
@@ -216,31 +215,6 @@
         <image name="reverse.png" width="30" height="30"/>
         <image name="second.png" width="30" height="30"/>
     </resources>
-    <classes>
-        <class className="AuthorViewController" superclassName="RootViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AuthorViewController.h"/>
-        </class>
-        <class className="BookViewController" superclassName="RootViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BookViewController.h"/>
-        </class>
-        <class className="HighlightingTextView" superclassName="UITextView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HighlightingTextView.h"/>
-        </class>
-        <class className="QuoteCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/QuoteCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="actAndSceneLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="characterLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="quotationTextView" candidateClass="HighlightingTextView"/>
-            </relationships>
-        </class>
-        <class className="RootViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RootViewController.h"/>
-        </class>
-        <class className="SettingViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
