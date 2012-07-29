@@ -38,12 +38,26 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
     else {
         NSLog(@"Already have the data");
     }
+/*
     NSArray *viewControllers=self.window.rootViewController.childViewControllers;
     BookViewController *controller1 = (BookViewController *)[viewControllers objectAtIndex:0];
     controller1.managedObjectContext = self.managedObjectContext;
     AuthorViewController *controller2 = (AuthorViewController *)[viewControllers objectAtIndex:1];
     controller2.managedObjectContext = self.managedObjectContext;
+  */
+
+    /* cumbersome methods
+    // Ray Wenderlich's tutorials
+    // in the didFinishLaunchingWithOptions: section:
+    UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
+    UINavigationController *navigationController1 = [[tabBarController viewControllers] objectAtIndex:0];
+    BookViewController *bookViewController = [[navigationController1 viewControllers] objectAtIndex:0];
+    bookViewController.managedObjectContext = self.managedObjectContext;
     
+    UINavigationController *navigationController2 = [[tabBarController viewControllers] objectAtIndex:0];
+    AuthorViewController *authorViewController = [[navigationController2 viewControllers] objectAtIndex:0];
+    authorViewController.managedObjectContext = self.managedObjectContext;
+  */  
     
     return YES;
 }

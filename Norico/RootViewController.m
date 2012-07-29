@@ -45,7 +45,7 @@
 @synthesize openSectionIndex=_openSectionIndex;
 @synthesize initialPinchHeight=_initialPinchHeight;
 @synthesize uniformRowHeight=_uniformRowHeight;
-@synthesize spinner=_spinner;
+//@synthesize spinner=_spinner;
 //
 //
 //
@@ -57,7 +57,7 @@
         [self.tableView reloadData];
     }
 }
-
+/*
 -(UIActivityIndicatorView *) spinner
 {
     if(! _spinner){
@@ -80,7 +80,7 @@
     }
     return _spinner;
 }
-
+*/
 
 // Copy/Cut/Select/SelectAll のコンテキストメニュー表示を抑制する
 -(BOOL)canBecomeFirstResponder {
@@ -168,6 +168,10 @@
 		
 		self.sectionInfoArray = infoArray;
 #else // #ifdef __TEST_NOT_BLOCK__
+        UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        [spinner startAnimating];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
+
         dispatch_queue_t downloadQueue = dispatch_queue_create("setup sections", NULL);
         dispatch_async(downloadQueue, ^{
             for (NSInteger sec = 0; sec <[self numberOfSectionsInTableView:nil]; sec++) {
@@ -185,6 +189,7 @@
             }            
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.sectionInfoArray = infoArray;
+                self.navigationItem.rightBarButtonItem = nil;
             });
         });
         dispatch_release(downloadQueue);
@@ -487,7 +492,11 @@ viewForHeaderInSection:(NSInteger)section
     NSMutableArray *indexPathsToInsert = [[NSMutableArray alloc] init];
     NSMutableArray *indexPathsToDelete = [[NSMutableArray alloc] init];
     NSInteger previousOpenSectionIndex = self.openSectionIndex;
-    
+
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [spinner startAnimating];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
+ 
     dispatch_queue_t downloadQueue = dispatch_queue_create("open sections", NULL);
     dispatch_async(downloadQueue, ^{
         for (NSInteger i = 0; i < countOfRowsToInsert; i++) {
@@ -521,6 +530,7 @@ viewForHeaderInSection:(NSInteger)section
             [self.tableView deleteRowsAtIndexPaths:indexPathsToDelete withRowAnimation:deleteAnimation];
             [self.tableView endUpdates];
             self.openSectionIndex = sectionOpened;
+            self.navigationItem.rightBarButtonItem = nil;
         });
     });
     dispatch_release(downloadQueue);
@@ -560,6 +570,10 @@ viewForHeaderInSection:(NSInteger)section
         }
         [self.tableView deleteRowsAtIndexPaths:indexPathsToDelete withRowAnimation:UITableViewRowAnimationTop];
 #else //#ifdef __TEST_NOT_BLOCK__
+        UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        [spinner startAnimating];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
+
         dispatch_queue_t downloadQueue = dispatch_queue_create("delete sections", NULL);
         dispatch_async(downloadQueue, ^{
             for (NSInteger i = 0; i < countOfRowsToDelete; i++) {
@@ -568,6 +582,7 @@ viewForHeaderInSection:(NSInteger)section
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.tableView deleteRowsAtIndexPaths:indexPathsToDelete withRowAnimation:UITableViewRowAnimationTop];
                 //[self.tableView reloadData];
+                self.navigationItem.rightBarButtonItem = nil;
             });
         });
         dispatch_release(downloadQueue);
@@ -717,7 +732,7 @@ viewForHeaderInSection:(NSInteger)section
         MFMailComposeViewController* pickerCtl = [[MFMailComposeViewController alloc] init];
         pickerCtl.mailComposeDelegate = self;
         Verse *verse = [self verseInIndexPath:indexPath];
-        NSString *msg=[NSString stringWithFormat:@"「%s」（%s）", verse.text, verse.author];
+        NSString *msg=[NSString stringWithFormat:@"「%@」（%@）", verse.text, verse.author];
         [pickerCtl setMessageBody:msg  isHTML:NO];
         // NSData* data = UIImagePNGRepresentation(img);
         // [pickerCtl addAttachmentData:data mimeType:@"image/png" fileName:@"sample.png"];
@@ -753,7 +768,7 @@ viewForHeaderInSection:(NSInteger)section
         MFMessageComposeViewController* pickerCtl = [[MFMessageComposeViewController alloc] init];
         pickerCtl.messageComposeDelegate = self;
         Verse *verse = [self verseInIndexPath:indexPath];
-        NSString *msg=[NSString stringWithFormat:@"「%s」（%s）", verse.text, verse.author];
+        NSString *msg=[NSString stringWithFormat:@"「%@」（%@）", verse.text, verse.author];
         pickerCtl.body=msg;
         // NSData* data = UIImagePNGRepresentation(img);
         // [pickerCtl addAttachmentData:data mimeType:@"image/png" fileName:@"sample.png"];

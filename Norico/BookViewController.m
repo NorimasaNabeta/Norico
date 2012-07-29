@@ -67,6 +67,9 @@
     [super viewDidLoad];
  	// Do any additional setup after loading the view, typically from a nib.
     
+    id appDelegate = (id)[[UIApplication sharedApplication] delegate];
+    self.managedObjectContext = [appDelegate managedObjectContext];
+
     // http://stackoverflow.com/questions/2966844/ipad-coredata-fetchedrequest-ignores-changes-in-predicate
     // You must clear cache all time when you change predicate or fetchRequest
     [NSFetchedResultsController deleteCacheWithName:@"Book"];
