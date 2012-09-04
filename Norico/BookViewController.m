@@ -19,6 +19,7 @@
 
 @synthesize managedObjectContext;
 @synthesize fetchedResultsController=_fetchedResultsController;
+@synthesize titleBook;
 
 -(NSFetchedResultsController*) fetchedResultsController
 {

@@ -732,7 +732,7 @@ viewForHeaderInSection:(NSInteger)section
         MFMailComposeViewController* pickerCtl = [[MFMailComposeViewController alloc] init];
         pickerCtl.mailComposeDelegate = self;
         Verse *verse = [self verseInIndexPath:indexPath];
-        NSString *msg=[NSString stringWithFormat:@"「%@」（%@）", verse.text, verse.author];
+        NSString *msg=[NSString stringWithFormat:@" 「%@（%@）」", verse.text, verse.author];
         [pickerCtl setMessageBody:msg  isHTML:NO];
         // NSData* data = UIImagePNGRepresentation(img);
         // [pickerCtl addAttachmentData:data mimeType:@"image/png" fileName:@"sample.png"];
@@ -768,7 +768,7 @@ viewForHeaderInSection:(NSInteger)section
         MFMessageComposeViewController* pickerCtl = [[MFMessageComposeViewController alloc] init];
         pickerCtl.messageComposeDelegate = self;
         Verse *verse = [self verseInIndexPath:indexPath];
-        NSString *msg=[NSString stringWithFormat:@"「%@」（%@）", verse.text, verse.author];
+        NSString *msg=[NSString stringWithFormat:@" 「%@（%@）」", verse.text, verse.author];
         pickerCtl.body=msg;
         // NSData* data = UIImagePNGRepresentation(img);
         // [pickerCtl addAttachmentData:data mimeType:@"image/png" fileName:@"sample.png"];
@@ -818,7 +818,7 @@ viewForHeaderInSection:(NSInteger)section
         
         //Verse *verse = [self.fetchedResultsController objectAtIndexPath:indexPath];
         Verse *verse = [self verseInIndexPath:indexPath];
-        [tweetViewController setInitialText:[NSString stringWithFormat:@"%@(%@)", verse.text,  verse.author ]];
+        [tweetViewController setInitialText:[NSString stringWithFormat:@" 「%@(%@)」", verse.text,  verse.author ]];
         
         // Create the completion handler block.
         [tweetViewController setCompletionHandler:^(TWTweetComposeViewControllerResult result) {

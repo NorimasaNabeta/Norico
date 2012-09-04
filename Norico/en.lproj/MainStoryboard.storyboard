@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2549" systemVersion="12A269" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2549" systemVersion="12B19" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4">
     <dependencies>
+        <deployment defaultVersion="1296" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1498"/>
     </dependencies>
     <scenes>
@@ -205,7 +206,41 @@
                     <navigationItem key="navigationItem" title="Book" id="Fv8-Vv-kTU"/>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="872" y="-294"/>
+            <point key="canvasLocation" x="1327" y="-294"/>
+        </scene>
+        <!--Book Shelf Table View Controller - BookShelf-->
+        <scene sceneID="DOC-Ex-cWR">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YTZ-cX-IkO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="aU7-GE-Cxx" customClass="BookShelfTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" sectionIndexMinimumDisplayRowCount="3" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="ndj-fQ-yVF">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BookShelfTableCell" id="UhY-nn-uRt">
+                                <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="1" width="280" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <connections>
+                                    <segue destination="xwS-HG-ziV" kind="push" identifier="ShowBook" id="Htp-9f-s1i"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="aU7-GE-Cxx" id="qKI-j7-0Rb"/>
+                            <outlet property="delegate" destination="aU7-GE-Cxx" id="1pV-U5-SqM"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="BookShelf" id="892-0a-xpN"/>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="872" y="-289"/>
         </scene>
         <!--Navigation Controller - Book-->
         <scene sceneID="xbw-4H-ydW">
@@ -220,7 +255,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="xwS-HG-ziV" kind="relationship" relationship="rootViewController" id="m9C-Sy-J3b"/>
+                        <segue destination="aU7-GE-Cxx" kind="relationship" relationship="rootViewController" id="tWO-rM-PWa"/>
                     </connections>
                 </navigationController>
             </objects>
